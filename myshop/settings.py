@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "shop.apps.ShopConfig",
     'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -64,6 +67,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'cart.context_processors.cart'
             ],
         },
     },
@@ -128,3 +132,13 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CART_SESSION_ID = 'cart'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51O5Qw1F0jsWjaTOArOj3qawGyRstwkfOotc7O6ZUMFlsSe5ZAJ2c3qP9gqMpQnM6lHBPt3LvMjO2T9MG7shq0E8h00E1fOgRPw' # Publishable key
+STRIPE_SECRET_KEY = 'sk_test_51O5Qw1F0jsWjaTOA28TinnusyVGaMHsLdPBhdjEKsY6fCq9B9aJGdUeYA7zcbNkeSa6nCDt3wnKgS1UoWe0AL7VN00NcwSbpu9' # Secret key
+STRIPE_API_VERSION = '2022-08-01'
+STRIPE_WEBHOOK_SECRET = 'whsec_65e8568cf0198530198456c4f50ac545ec035c37d0f5806667314da35201f139'
+
+STATIC_ROOT = BASE_DIR / 'static'
